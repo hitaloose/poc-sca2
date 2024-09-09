@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
 
 import { redirectToSca2Login } from "../../utils/redirect-to-sca2-login";
-import { obterUsuario } from "../../utils/sca2-client";
 import { useUser } from "../../hooks/use-user";
 
 import "./styles.css";
@@ -22,17 +21,9 @@ export const Home = () => {
     redirectToSca2Login(Services.SIEMA_COMUNICADO);
   }, []);
 
-  const handleGetUserClick = useCallback(async () => {
-    try {
-      setLoading(true);
-
-      await obterUsuario(user!.sessionToken);
-    } catch (error) {
-      alert(handleError(error));
-    } finally {
-      setLoading(false);
-    }
-  }, [user]);
+  const handleTucandeiraLoginClick = useCallback(async () => {
+    redirectToSca2Login(Services.TUCANDEIRA);
+  }, []);
 
   const handleLogoutClick = useCallback(async () => {
     try {
@@ -54,14 +45,17 @@ export const Home = () => {
 
       <div style={{ display: "flex", gap: "24px", justifyContent: "center" }}>
         {!user && (
-          <button onClick={handleSiemaLoginClick}>Logar (SIEMA)</button>
+          <>
+            <button onClick={handleSiemaLoginClick}>Logar (SIEMA)</button>
+            <button onClick={handleSiemaComunicadoLoginClick}>
+              Logar (SIEMA COMUNICADO)
+            </button>
+            <button onClick={handleTucandeiraLoginClick}>
+              Logar (TUCANDEIRA)
+            </button>
+          </>
         )}
-        {!user && (
-          <button onClick={handleSiemaComunicadoLoginClick}>
-            Logar (SIEMA COMUNICADO)
-          </button>
-        )}
-        {!!user && <button onClick={handleGetUserClick}>Checar usuário</button>}
+
         {!!user && <button onClick={handleLogoutClick}>Sair</button>}
       </div>
 

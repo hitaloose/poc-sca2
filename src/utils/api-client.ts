@@ -21,6 +21,7 @@ export const login = async (ticket: string, service: Services) => {
   const loginUrls: Record<Services, string> = {
     [Services.SIEMA]: "/auth/login/sca2/siema",
     [Services.SIEMA_COMUNICADO]: "/auth/login/sca2/comunicados",
+    [Services.TUCANDEIRA]: "/auth/login",
   };
 
   const { data } = await apiClient.post<Sca2LoginResponse>(loginUrls[service], {
