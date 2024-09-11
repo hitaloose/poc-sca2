@@ -14,6 +14,6 @@ export const SERVICE_URLS: Record<Services, string> = {
   [Services.TUCANDEIRA]: URL_TUCANDEIRA,
 };
 
-export const API_URL = "http://localhost:4000/api/v1";
+export const API_URL = "https://codex-recrutamento-api-develop.up.railway.app/api/v1";
 
 export const USER_PERSIST_KEY = "@USER";
