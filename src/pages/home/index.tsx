@@ -5,11 +5,15 @@ import { useUser } from "../../hooks/use-user";
 
 import "./styles.css";
 import { Services } from "../../utils/services";
-import { logout } from "../../utils/api-client";
 import { handleError } from "../../utils/handle-error";
+import { API_URLS } from "../../utils/constants";
+import { useApiUrl } from "../../hooks/use-api-url";
+import { useApi } from "../../hooks/use-api";
 
 export const Home = () => {
   const { user, removeUser } = useUser();
+  const { apiUrl, setApiUrl } = useApiUrl();
+  const { logout } = useApi();
 
   const [loading, setLoading] = useState(false);
 
@@ -30,13 +34,13 @@ export const Home = () => {
       setLoading(true);
 
       await logout();
-      removeUser();
     } catch (error) {
       alert(handleError(error));
     } finally {
+      removeUser();
       setLoading(false);
     }
-  }, [removeUser]);
+  }, [logout, removeUser]);
 
   return (
     <>
@@ -66,6 +70,19 @@ export const Home = () => {
           </pre>
         </div>
       )}
+
+      <div className="api-wrapper">
+        {API_URLS.map((url) => (
+          <button
+            data-selected={url === apiUrl}
+            key={url}
+            title={url}
+            onClick={() => setApiUrl(url)}
+          >
+            {url}
+          </button>
+        ))}
+      </div>
     </>
   );
 };

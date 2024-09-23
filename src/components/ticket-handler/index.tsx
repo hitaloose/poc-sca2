@@ -2,13 +2,14 @@ import { useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { redirectToSca2Login } from "../../utils/redirect-to-sca2-login";
-import { login } from "../../utils/api-client";
 import { useUser } from "../../hooks/use-user";
 import { Services } from "../../utils/services";
 import { handleError } from "../../utils/handle-error";
+import { useApi } from "../../hooks/use-api";
 
 export const TicketHandler = ({ service }: { service: Services }) => {
   const navigate = useNavigate();
+  const { login } = useApi();
 
   const { user, setUser } = useUser();
 
@@ -24,7 +25,7 @@ export const TicketHandler = ({ service }: { service: Services }) => {
         navigate("/");
       }
     },
-    [navigate, service, setUser]
+    [login, navigate, service, setUser]
   );
 
   const handleDidMont = useCallback(async () => {

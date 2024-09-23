@@ -1,3 +1,20 @@
+.api-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.api-wrapper button {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.api-wrapper button[data-selected="true"] {
+  border-color: #8c8eb4;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
