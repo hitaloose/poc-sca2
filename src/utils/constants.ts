@@ -3,7 +3,7 @@ import { Services } from "./services";
 export const URL_SSO_2 = "https://homlogin.sso2.ibama.serpro.gov.br";
 export const URL_SCA_2 = "https://homsca2.ibama.serpro.gov.br";
 
-const BASE_URL = "http://dev.local";
+const BASE_URL = "https://hitaloose.github.io/poc-sca2";
 export const URL_SIEMA = `${BASE_URL}/siema-ticket-handler`;
 export const URL_SIEMA_COMUNICADO = `${BASE_URL}/comunicados-ticket-handler`;
 export const URL_TUCANDEIRA = `${BASE_URL}/tucandeira-ticket-handler`;
