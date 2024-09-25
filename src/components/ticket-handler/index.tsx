@@ -22,7 +22,7 @@ export const TicketHandler = ({ service }: { service: Services }) => {
       } catch (error) {
         alert(handleError(error));
 
-        navigate("/");
+        navigate("/poc-sca2");
       }
     },
     [login, navigate, service, setUser]

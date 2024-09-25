@@ -10,19 +10,19 @@ import "./index.css";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/poc-sca2",
     element: <Home />,
   },
   {
-    path: "/siema-ticket-handler",
+    path: "/poc-sca2/siema-ticket-handler",
     element: <SiemaTicketHandler />,
   },
   {
-    path: "/comunicados-ticket-handler",
+    path: "/poc-sca2/comunicados-ticket-handler",
     element: <ComunicadosTicketHandler />,
   },
   {
-    path: "/tucandeira-ticket-handler",
+    path: "/poc-sca2/tucandeira-ticket-handler",
     element: <TucandeiraTicketHandler />,
   },
 ]);
