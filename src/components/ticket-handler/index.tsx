@@ -30,7 +30,7 @@ export const TicketHandler = ({ service }: { service: Services }) => {
 
   const handleDidMont = useCallback(async () => {
     if (user) {
-      navigate("/");
+      navigate("/poc-sca2");
       return;
     }
 
