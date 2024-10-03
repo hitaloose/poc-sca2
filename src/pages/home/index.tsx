@@ -42,21 +42,25 @@ export const Home = () => {
     }
   }, [logout, removeUser]);
 
+  const handleCopyTokenClick = useCallback(() => {
+    if (!user) {
+      return;
+    }
+
+    navigator.clipboard.writeText(user.sessionToken);
+  }, [user]);
+
   return (
     <>
       {loading && <h4>Carregando...</h4>}
-      <h4>POC SCA2</h4>
+      <h4>Login SCA2</h4>
 
       <div style={{ display: "flex", gap: "24px", justifyContent: "center" }}>
         {!user && (
           <>
             <button onClick={handleSiemaLoginClick}>Logar (SIEMA)</button>
-            <button onClick={handleSiemaComunicadoLoginClick}>
-              Logar (SIEMA COMUNICADO)
-            </button>
-            <button onClick={handleTucandeiraLoginClick}>
-              Logar (TUCANDEIRA)
-            </button>
+            <button onClick={handleSiemaComunicadoLoginClick}>Logar (SIEMA COMUNICADO)</button>
+            <button onClick={handleTucandeiraLoginClick}>Logar (TUCANDEIRA)</button>
           </>
         )}
 
@@ -64,21 +68,19 @@ export const Home = () => {
       </div>
 
       {!!user && (
-        <div style={{ maxHeight: "200px", overflow: "scroll" }}>
-          <pre style={{ textAlign: "left" }}>
-            {JSON.stringify(user, null, 2)}
-          </pre>
+        <div>
+          <div style={{ display: "flex" }}>
+            <button onClick={handleCopyTokenClick}>Copiar token</button>
+          </div>
+          <div style={{ maxHeight: "200px", overflow: "scroll" }}>
+            <pre style={{ textAlign: "left" }}>{JSON.stringify(user, null, 2)}</pre>
+          </div>
         </div>
       )}
 
       <div className="api-wrapper">
         {API_URLS.map((url) => (
-          <button
-            data-selected={url === apiUrl}
-            key={url}
-            title={url}
-            onClick={() => setApiUrl(url)}
-          >
+          <button data-selected={url === apiUrl} key={url} title={url} onClick={() => setApiUrl(url)}>
             {url}
           </button>
         ))}
