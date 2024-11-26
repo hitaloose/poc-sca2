@@ -18,7 +18,7 @@ export const API_URLS = [
   "http://localhost:4000/api/v1",
   "https://codex-recrutamento-api-develop.up.railway.app/api/v1",
   "https://tucandeira-backend.dev.ibama.gov.br/api/v1",
-  "https://tucandeira-backend.ngrok.dev/api/v1",
+  "https://tucandeira-backend.hom.ibama.gov.br/",
 ];
 
 export const USER_PERSIST_KEY = "@USER";

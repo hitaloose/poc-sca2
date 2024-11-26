@@ -2,13 +2,13 @@ import { useCallback, useState } from "react";
 
 import { redirectToSca2Login } from "../../utils/redirect-to-sca2-login";
 import { useUser } from "../../hooks/use-user";
-
-import "./styles.css";
 import { Services } from "../../utils/services";
 import { handleError } from "../../utils/handle-error";
 import { API_URLS } from "../../utils/constants";
 import { useApiUrl } from "../../hooks/use-api-url";
 import { useApi } from "../../hooks/use-api";
+
+import "./styles.css";
 
 export const Home = () => {
   const { user, removeUser } = useUser();
